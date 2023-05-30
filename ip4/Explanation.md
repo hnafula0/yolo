@@ -77,4 +77,14 @@ Run the following command to expose the website to the internet kubectl expose d
 
 Find the external IP that GKE provisioned for your application by inspecting the service using the command kubectl get service
 
-****
+**Scale GKE deployment**
+Run the following command to scale your deployment replicas kubectl scale deployment yolo --replicas=3
+
+**Clean Up**
+Delete git repository
+Delete container registry images
+Delete cloud build artifacts from cloud storage
+Delete GKE cluster
+Delete GKE service
+
+
