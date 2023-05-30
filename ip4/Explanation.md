@@ -49,3 +49,19 @@ RUN - Runs a new command in a new layer
 EXPOSE - Informs docker thta the container listens on the speicified network port at runtime
 CMD - Specifies the instruction that is to be executed when a docker container starts
 
+**ORCHESTRATION
+Creating a kubernetes cluster using minikube
+**
+
+Install kubectl
+Install minikube
+Use minikube start command to create a cluster
+Create a folder to hold resource definition YAML files created
+Create a deployment resource for backend
+Define a service which makes a pod accessible to users ouside the cluster
+Create a resource deployment for frontend
+Define a service
+Define the database tier
+Submit resource definitions to kubernetes using the command kubectl apply -f <folder>
+Watch pods using the command kubectl get pods --watch
+Access service using the command minikube service yolo --url
