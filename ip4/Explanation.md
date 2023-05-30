@@ -50,18 +50,31 @@ EXPOSE - Informs docker thta the container listens on the speicified network por
 CMD - Specifies the instruction that is to be executed when a docker container starts
 
 **ORCHESTRATION
-Creating a kubernetes cluster using minikube
-**
+Set environment**
 
-Install kubectl
-Install minikube
-Use minikube start command to create a cluster
-Create a folder to hold resource definition YAML files created
-Create a deployment resource for backend
-Define a service which makes a pod accessible to users ouside the cluster
-Create a resource deployment for frontend
-Define a service
-Define the database tier
-Submit resource definitions to kubernetes using the command kubectl apply -f <folder>
-Watch pods using the command kubectl get pods --watch
-Access service using the command minikube service yolo --url
+Activate cloud shell
+Confirm that you are already authenticated and your project is set to your project ID
+Set default zone and project configuration
+
+**Create a GKE cluster**
+
+Ensure proper apis are enabled using the command gcloud services enable container.googleapis.com
+Create your cluster using the command gcloud container clusters create yolo-cluster --num-nodes 3
+
+**Clone source repository**
+Git clone then change to the appropriate repository
+
+**Create docker container**
+Enable cloudbuild api by running command gcloud services enable cloudbuild.googleapis.com
+Start the build process using the command gcloud builds submit --tag 
+
+**Deploy container to GKE**
+
+Deploy the app using the command kubectl create deployment
+
+**Expose GKE deployment**
+Run the following command to expose the website to the internet kubectl expose deployment yolo --type=LoadBalancer --port 80 --target-port 8080
+
+Find the external IP that GKE provisioned for your application by inspecting the service using the command kubectl get service
+
+****
