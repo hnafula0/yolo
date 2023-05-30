@@ -49,3 +49,42 @@ RUN - Runs a new command in a new layer
 EXPOSE - Informs docker thta the container listens on the speicified network port at runtime
 CMD - Specifies the instruction that is to be executed when a docker container starts
 
+**ORCHESTRATION
+Set environment**
+
+Activate cloud shell
+Confirm that you are already authenticated and your project is set to your project ID
+Set default zone and project configuration
+
+**Create a GKE cluster**
+
+Ensure proper apis are enabled using the command gcloud services enable container.googleapis.com
+Create your cluster using the command gcloud container clusters create yolo-cluster --num-nodes 3
+
+**Clone source repository**
+Git clone then change to the appropriate repository
+
+**Create docker container**
+Enable cloudbuild api by running command gcloud services enable cloudbuild.googleapis.com
+Start the build process using the command gcloud builds submit --tag 
+
+**Deploy container to GKE**
+
+Deploy the app using the command kubectl create deployment
+
+**Expose GKE deployment**
+Run the following command to expose the website to the internet kubectl expose deployment yolo --type=LoadBalancer --port 80 --target-port 8080
+
+Find the external IP that GKE provisioned for your application by inspecting the service using the command kubectl get service
+
+**Scale GKE deployment**
+Run the following command to scale your deployment replicas kubectl scale deployment yolo --replicas=3
+
+**Clean Up**
+Delete git repository
+Delete container registry images
+Delete cloud build artifacts from cloud storage
+Delete GKE cluster
+Delete GKE service
+
+
